@@ -1,0 +1,23 @@
+{
+  "name": "electron_study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hytenic/electron_study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hytenic/electron_study/issues"
+  },
+  "homepage": "https://github.com/hytenic/electron_study#readme",
+  "dependencies": {
+    "electron": "^9.1.0"
+  }
+}
