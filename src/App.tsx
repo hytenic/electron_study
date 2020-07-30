@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { ipcRenderer } from 'electron';
+const { ipcRenderer } = window.require('electron');
 
-function App() {
+const App = () => {
 
-  const greeting = require('./greeting.json');
+  const [items, setItems] = useState([]);
   // let items: Array<string> = [];
-  
 
-  // ipcRenderer.on('item:add', (e, item: string) => {
-  //   console.log(item);  
-  // });
+  ipcRenderer.on('item:add', (e: any, item: string) => {
+    console.log(item);
+    items.push(item);
+  });
 
   return (
     <div className="App">
-      <div>Hello Electron!{greeting.message}</div>
-      {/* <ul></ul> */}
+      <div>Hello Electron!</div>
+      {items.map(el => {
+        return <div>{el}</div>
+      })}
     </div>
   );
 }
+
+// ipcRenderer.on('item:add', (e: any, item: string) => {
+//   console.log(item);
+// });
 
 export default App;

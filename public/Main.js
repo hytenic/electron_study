@@ -6,12 +6,15 @@ let mainWindow;
 let addWindow;
 
 function onClosed() {
-  // mainWindow = null;
   app.quit();
 }
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true,
+      // preload: __dirname + '/preload.js'
+    },
     width: 1200,
     height: 800
   });
@@ -54,7 +57,7 @@ function createAddWindow() {
 }
 
 ipcMain.on('item:add', (e, item) => {
-  console.log(item);
+  // console.log(item);
   mainWindow.webContents.send('item:add', item);
   addWindow.close();
 });
