@@ -4,12 +4,13 @@ const { ipcRenderer } = window.require('electron');
 
 const App = () => {
 
-  const [items, setItems] = useState([]);
-  // let items: Array<string> = [];
+  const [items, setItems] = useState<Array<string>>([]);
 
   ipcRenderer.on('item:add', (e: any, item: string) => {
+    let newItems: Array<string> = items.slice();
     console.log(item);
-    items.push(item);
+    newItems.push(item);
+    setItems(newItems);
   });
 
   return (
@@ -22,8 +23,5 @@ const App = () => {
   );
 }
 
-// ipcRenderer.on('item:add', (e: any, item: string) => {
-//   console.log(item);
-// });
 
 export default App;
