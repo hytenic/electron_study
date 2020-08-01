@@ -13,6 +13,10 @@ const App = () => {
     setItems(newItems);
   });
 
+  ipcRenderer.on('item:clear', (e: any) => {
+    setItems([]);
+  });
+
   return (
     <div className="App">
       <div>Hello Electron!</div>
